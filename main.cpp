@@ -42,15 +42,12 @@ void solve()
     */
 }
 
-int main(int argc, char const* argv[])
+int main(int argc, char const *argv[])
 {
-
     // Initalize level
     initMaze(argv[1]);
-    cout << "Reached Goal!" << endl;
 
     initialize();
-    cout << "Reached Goal!" << endl;
 
     // Game loop
     while (true)
