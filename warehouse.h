@@ -1,4 +1,4 @@
-﻿/*
+/*
     You shouldn't touch this file. You have all you need in the functions introduced in "main.cpp".
 */
 
@@ -50,13 +50,11 @@ namespace __privates
 };
 
 // Initalizes warehouse with level file
-void initMaze(const string& levelFile)
+void initMaze(const string &levelFile)
 {
-    cout << "eso here" << endl;
-
     __privates::clear();
-    string inputFilePath = "warehouse1.txt"; // full path to input file
-    ifstream file(inputFilePath);
+
+    ifstream file(levelFile.c_str());
     if (file.is_open())
     {
         string line;
@@ -86,10 +84,7 @@ void initMaze(const string& levelFile)
         file.close();
     }
     else
-    {
-        cout << "can't find Goal!" << endl;
         throw new invalid_argument("Level file was not found.");
-    }
 }
 
 // Map
@@ -169,9 +164,9 @@ void printAround()
 // Gets robot poision in warehouse
 Point getRobotPos() { return __privates::robotPos; }
 
-
+ 
 /*
-    Moves ROBOT one step (right: [-1 0 1], down: [-1 0 1])
+    Moves ROBOT one step (right: [-1 0 1], down: [-1 0 1]) 
 
       ↖ ↑ ↗
       ← R →
@@ -191,13 +186,13 @@ void moveRobot(int right, int down)
 // Goal
 
 // Pick an item from the map 
-bool pickItem() {
-    if (__privates::robotPos.row == __privates::pickupPos.row && __privates::robotPos.col == __privates::pickupPos.col) {
+bool pickItem() { 
+    if(__privates::robotPos.row == __privates::pickupPos.row && __privates::robotPos.col == __privates::pickupPos.col){
         __privates::hasItem = true;
-        cout << "Item Picked Successfully" << endl;
+        cout<< "Item Picked Successfully"<< endl;
     }
     return __privates::hasItem;
-}
+    }
 
 // Gets Item position in warehouse
 Point getItemPos() { return __privates::pickupPos; }
@@ -209,8 +204,8 @@ Point getGoalPos() { return __privates::goalPos; }
 bool hasReachedGoal()
 {
     return __privates::robotPos.row == __privates::goalPos.row &&
-        __privates::robotPos.col == __privates::goalPos.col &&
-        __privates::hasItem;
+           __privates::robotPos.col == __privates::goalPos.col &&
+           __privates::hasItem;
 }
 
 #endif
